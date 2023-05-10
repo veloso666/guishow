@@ -8,8 +8,17 @@ public class Cliente {
     private String nome;
     private String email;
     private int idade;
+    private String curso;
     
-    public String getNome(){
+    public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+
+	public String getNome(){
         return nome;
     }
 
@@ -43,7 +52,7 @@ public class Cliente {
             try {
                 f1.createNewFile();
                 FileWriter writer = new FileWriter(f1);
-                writer.write("Nome: "+this.nome + "\nEmail: "+ this.email+ "\nIdade: " + this.idade);
+                writer.write("Nome: "+this.nome + "\nEmail: "+ this.email+ "\nIdade: " + this.idade+"\nCurso: "+this.curso);
                 writer.flush();
                 writer.close();
             } catch (Exception ex) {

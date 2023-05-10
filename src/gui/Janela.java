@@ -1,13 +1,18 @@
 package gui;
 import java.awt.EventQueue;
-
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 
@@ -69,16 +74,18 @@ public class Janela {
 		textField_1.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("DialogInput",Font.BOLD,12));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Cliente cliente = new Cliente();
 				cliente.setNome(textField.getText());
 				cliente.setEmail(textField_1.getText());
 				cliente.setIdade(Integer.parseInt(textField_2.getText()));
+			//	cliente.setCurso();
 				JOptionPane.showMessageDialog(null, cliente.salvar());
 			}
 		});
-		btnCadastrar.setBounds(171, 184, 89, 23);
+		btnCadastrar.setBounds(171, 184, 105, 31);
 		frame.getContentPane().add(btnCadastrar);
 		
 		JLabel lblNewLabel_2 = new JLabel("Idade:");
@@ -90,16 +97,40 @@ public class Janela {
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("JAVA");
-		chckbxNewCheckBox.setBounds(10, 135, 51, 23);
-		frame.getContentPane().add(chckbxNewCheckBox);
-		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("PHP");
-		chckbxNewCheckBox_1.setBounds(63, 135, 46, 23);
-		frame.getContentPane().add(chckbxNewCheckBox_1);
-		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("C#");
-		chckbxNewCheckBox_2.setBounds(111, 135, 41, 23);
-		frame.getContentPane().add(chckbxNewCheckBox_2);
+		  JPanel panel = new JPanel();
+	        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+	        final JCheckBox checkbox1 = new JCheckBox("Opção 1");
+	        final JCheckBox checkbox2 = new JCheckBox("Opção 2");
+	        final JCheckBox checkbox3 = new JCheckBox("Opção 3");
+
+	        panel.add(checkbox1);
+	        panel.add(checkbox2);
+	        panel.add(checkbox3);
+	        btnCadastrar.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                StringBuilder selectedOptions = new StringBuilder();
+	                if (checkbox1.isSelected()) {
+	                    selectedOptions.append("Opção 1 selecionada\n");
+	                }
+	                if (checkbox2.isSelected()) {
+	                    selectedOptions.append("Opção 2 selecionada\n");
+	                }
+	                if (checkbox3.isSelected()) {
+	                    selectedOptions.append("Opção 3 selecionada\n");
+	                }
+
+	                try {
+	                    BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jlvat\\Desktop\\my codes\\opcoes.txt"));
+	                    writer.write(selectedOptions.toString());
+	                    writer.close();
+	                    JOptionPane.showMessageDialog(frame, "Opções salvas com sucesso!");
+	                } catch (IOException ex) {
+	                    ex.printStackTrace();
+	                    JOptionPane.showMessageDialog(frame, "Erro ao salvar as opções.", "Erro", JOptionPane.ERROR_MESSAGE);
+	                }
+	            }
+	        });
 	}
 }
