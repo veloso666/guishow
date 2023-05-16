@@ -1,16 +1,15 @@
 package gui;
 
-import java.io.File;
+import java.io.File;//biblioteca para manipulação de arquivos
+import java.io.FileWriter;//instancia o escritor 
 
-import java.io.FileWriter;
-import java.io.Writer;
-public class Cliente {
+public class Cliente {   //atributos da classe cliente
     private String nome;
     private String email;
     private int idade;
     private String curso;
     
-    public String getCurso() {
+    public String getCurso() {//retorna o curso escolhido
 		return curso;
 	}
 
@@ -43,23 +42,23 @@ public class Cliente {
     }
     
 
-    public String salvar(){
+    public String salvar(){ //metodo para salvar no arquivo as informações capturadas na tela
         //mudar o diretório
-        File f1 = new File("C:\\Users\\jlvat\\Desktop\\TUDO\\my codes\\cliente.txt");
+        File f1 = new File("C:\\Users\\jlvat\\Desktop\\TUDO\\my codes\\cliente.txt");//instanciando um arquivo e passando o diretorio como parametro
 
         if (!f1.exists()) {
             
-            try {
-                f1.createNewFile();
+            try {//tentei
+                f1.createNewFile();//cria um novo arquivo
                 FileWriter writer = new FileWriter(f1);
-                writer.write("Nome: "+this.nome + "\nEmail: "+ this.email+ "\nIdade: " + this.idade+"\nCurso: "+this.curso);
-                writer.flush();
-                writer.close();
-            } catch (Exception ex) {
-                return "erro no sistema. msg" + ex.getMessage();
+                writer.write("Nome: "+this.nome + "\nEmail: "+ this.email+ "\nIdade: " + this.idade+"\nCurso: "+this.curso);//escrevendo no arquivo
+                writer.flush();//limpando o escritor
+                writer.close();//fechando o arquivo
+            } catch (Exception ex) {//capturei um erro
+                return "erro no sistema. msg" + ex.getMessage();//mostra o erro no console
             }
         }
 
-        return "sucesso ao cadastrar";
+        return "sucesso ao cadastrar";//retorna uma mensagem 
     }
 }
