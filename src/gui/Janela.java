@@ -1,22 +1,19 @@
 package gui;
-import java.awt.Desktop.Action;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import java.awt.Desktop.Action;// fornece uma representação abstrata de uma ação do sistema associada a um arquivo
+import java.awt.EventQueue;// é responsável por lidar com o tratamento de eventos de interface do usuário (UI) em aplicações gráficas.
+import java.awt.Font;//fornece varias fontes
+import java.awt.event.ActionEvent;//representar um evento de ação
+import java.awt.event.ActionListener;// usada para lidar com eventos de ação
+import javax.swing.JButton;//cria um botão
+import javax.swing.JCheckBox;//cria uma caixa de opções
+import javax.swing.JFrame;//cria uma janela
+import javax.swing.JLabel;// é usada para exibir um rótulo ou texto 
+import javax.swing.JOptionPane;//fornece uma caixa de diálogo pré-definida para exibir mensagens, solicitar entrada do usuário e exibir opções.
+import javax.swing.JTextField;//usada para criar um campo de texto de uma linha, onde o usuário pode inserir texto.
 
 
 public class Janela {
-	private String x = "Teste";
-
-	
-
+	private String x = "Teste";  //atributos de janela
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -141,10 +138,6 @@ public class Janela {
 					x = "C#";
 				}				
 			}
-		});
-		
-		
-		
-		
+		});	
 	}
 }
