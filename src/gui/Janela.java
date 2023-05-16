@@ -24,10 +24,10 @@ public class Janela {
 
 	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+		EventQueue.invokeLater(new Runnable() { //cria uma fila para executar depois
+			public void run() { //funçao para executar
 				try {
-					Janela window = new Janela();
+					Janela window = new Janela(); 
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,23 +36,17 @@ public class Janela {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public Janela() {
+	public Janela() { //metodo para criar a janela recebendo o metodo initialize
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	private void initialize() { //inicialização da janela, passando tudo o que vai compor a janela
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nome:");
+		JLabel lblNewLabel = new JLabel("Nome:"); 
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel.setBounds(10, 11, 46, 14);
 		frame.getContentPane().add(lblNewLabel);
