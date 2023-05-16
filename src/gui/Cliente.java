@@ -45,7 +45,7 @@ public class Cliente {
 
     public String salvar(){
         //mudar o diretório
-        File f1 = new File("C:\\Users\\jlvat\\Desktop\\my codes\\cliente.txt");
+        File f1 = new File("C:\\Users\\jlvat\\Desktop\\TUDO\\my codes\\cliente.txt");
 
         if (!f1.exists()) {
             

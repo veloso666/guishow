@@ -1,27 +1,29 @@
 package gui;
+import java.awt.Desktop.Action;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
 
 public class Janela {
+	private String x = "Teste";
+
+	
 
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JCheckBox chckbxNewCheckBox;
+	private JCheckBox chckbxNewCheckBox_1;
+	private JCheckBox chckbxNewCheckBox_2;
 
 	/**
 	 * Launch the application.
@@ -56,6 +58,7 @@ public class Janela {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nome:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel.setBounds(10, 11, 46, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -65,6 +68,7 @@ public class Janela {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Email:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel_1.setBounds(10, 51, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
@@ -81,14 +85,16 @@ public class Janela {
 				cliente.setNome(textField.getText());
 				cliente.setEmail(textField_1.getText());
 				cliente.setIdade(Integer.parseInt(textField_2.getText()));
-			//	cliente.setCurso();
+				cliente.setCurso(x);
 				JOptionPane.showMessageDialog(null, cliente.salvar());
 			}
 		});
+	
 		btnCadastrar.setBounds(171, 184, 105, 31);
 		frame.getContentPane().add(btnCadastrar);
 		
 		JLabel lblNewLabel_2 = new JLabel("Idade:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel_2.setBounds(10, 92, 46, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
@@ -97,40 +103,50 @@ public class Janela {
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
-		  JPanel panel = new JPanel();
-	        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-
-	        final JCheckBox checkbox1 = new JCheckBox("Opção 1");
-	        final JCheckBox checkbox2 = new JCheckBox("Opção 2");
-	        final JCheckBox checkbox3 = new JCheckBox("Opção 3");
-
-	        panel.add(checkbox1);
-	        panel.add(checkbox2);
-	        panel.add(checkbox3);
-	        btnCadastrar.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                StringBuilder selectedOptions = new StringBuilder();
-	                if (checkbox1.isSelected()) {
-	                    selectedOptions.append("Opção 1 selecionada\n");
-	                }
-	                if (checkbox2.isSelected()) {
-	                    selectedOptions.append("Opção 2 selecionada\n");
-	                }
-	                if (checkbox3.isSelected()) {
-	                    selectedOptions.append("Opção 3 selecionada\n");
-	                }
-
-	                try {
-	                    BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\jlvat\\Desktop\\my codes\\opcoes.txt"));
-	                    writer.write(selectedOptions.toString());
-	                    writer.close();
-	                    JOptionPane.showMessageDialog(frame, "Opções salvas com sucesso!");
-	                } catch (IOException ex) {
-	                    ex.printStackTrace();
-	                    JOptionPane.showMessageDialog(frame, "Erro ao salvar as opções.", "Erro", JOptionPane.ERROR_MESSAGE);
-	                }
-	            }
-	        });
+		final JCheckBox chckbxNewCheckBox = new JCheckBox("JAVA");
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		chckbxNewCheckBox.setBounds(10, 135, 61, 23);
+		frame.getContentPane().add(chckbxNewCheckBox);
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxNewCheckBox.isSelected()) {
+					x = "Java";
+				}				
+			}
+		});
+		
+		final JCheckBox chckbxNewCheckBox_1 = new JCheckBox("PHP");
+		chckbxNewCheckBox_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		chckbxNewCheckBox_1.setBounds(73, 135, 58, 23);
+		frame.getContentPane().add(chckbxNewCheckBox_1);
+		chckbxNewCheckBox_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxNewCheckBox_1.isSelected()) {
+					x = "PHP";
+				}				
+			}
+		});
+		
+		final JCheckBox chckbxNewCheckBox_2 = new JCheckBox("C#");
+		chckbxNewCheckBox_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		chckbxNewCheckBox_2.setBounds(133, 135, 51, 23);
+		frame.getContentPane().add(chckbxNewCheckBox_2);
+		chckbxNewCheckBox_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxNewCheckBox_2.isSelected()) {
+					x = "C#";
+				}				
+			}
+		});
+		
+		
+		
+		
 	}
 }
